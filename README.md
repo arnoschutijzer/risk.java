@@ -1,9 +1,8 @@
-RiskProject Patchnotes
-======================
-
+RiskProject patchnotes
+===
 
 RiskProject 0.96
-=====================
+---
 Updated db
 - changed Frans-Guyana to Kiribati in database
 
@@ -56,9 +55,9 @@ Added Status.java (enum)
 
 
 
-=====================
+
 RiskProject 0.95
-=====================
+---
 Updated all files
 - added @author
 
@@ -121,9 +120,9 @@ NewJFrame.Java deprecated?
 
 
 
-=====================
+
 RiskProject 0.91
-=====================
+---
 Updated classpath to include external libraries and jdbc drivers
 
 Updated DB
@@ -147,9 +146,9 @@ Updated Resource bundles
 
 
 
-=====================
+
 RiskProject 0.88
-=====================
+---
 updated GameGUI.java
 - implemented ActionListener + appropriate imports as requested
 - added btnAttack, btnExchange, btnEndTurn
@@ -169,9 +168,9 @@ added infantry.png
 
 
 
-=====================
+
 RiskProject 0.87
-=====================
+---
 updated GameGUI.java
 - mouseListener fully functional as of now
 
@@ -208,9 +207,9 @@ updated UserRepository.java
 
 
 
-=====================
+
 RiskProject 0.8
-=====================
+---
 GameGUI.java updated
 -additional panel added for extra info
 -scrolling over a GameSquare is now correctly shown
@@ -220,9 +219,9 @@ GameGUI.java updated
 
 
 
-=====================
+
 RiskProject v0.75
-=====================
+---
 updated Game.java
 -implemented calcArmy method
 
@@ -251,9 +250,9 @@ Created GameGUI.java
 
 
 
-=====================
+
 RiskProject v0.5
-=====================
+---
 added another worldmap
 
 updated MapRepository.java with method getMapNames
@@ -270,9 +269,9 @@ InitialisationJigloo.java deprecated: deleted as of now
 
 
 
-=====================
+
 RiskProject v0.43
-=====================
+---
 - updated User.java to construct new exception with a name instead of
 default construct a new exception
 - updated messages_en/messages_fr/messages_nl to include translation of
@@ -284,9 +283,9 @@ length is shorter than 2
 
 
 
-=====================
+
 RiskProject v0.35
-=====================
+---
 updated InitGUI
 updated UserAlreadExistsException to include error message when default
 constructor is called
@@ -306,9 +305,9 @@ ApplicationController.java: already deleted
 
 
 
-======================
+
 RiskProject v0.3 Patch
-======================
+---
 implemented initGUI fix
 
 fixed NullExceptionPointer
@@ -319,9 +318,9 @@ dutch countries added to resource bundles
 
 
 
-======================
+
 RiskProject v0.3
-======================
+---
 InitialisationJigloo optimized
 InitGUI implimented
 
