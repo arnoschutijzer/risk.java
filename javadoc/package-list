@@ -1,0 +1,9 @@
+
+domain
+domain.baseclass
+domain.enums
+domain.repositories
+exceptions
+gui
+persistance
+testui
