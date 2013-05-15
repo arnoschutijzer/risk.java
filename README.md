@@ -2,7 +2,6 @@ RiskProject Patchnotes
 ======================
 
 
-=====================
 RiskProject 0.96
 =====================
 Updated db
