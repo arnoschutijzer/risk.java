@@ -1,5 +1,65 @@
 RiskProject patchnotes
-===
+====
+      NOTE: RiskProject is now fully functioning.
+      RiskProject will only be updated for performance enhancements and 
+      uncaught bugfixes.
+      Future expansions might be added.
+
+
+RiskProject 1.0
+---
+Complete patch of every bug found
+Created Javadoc
+Added Javadoc to every class
+
+Updated DomainController.java
+- deleted getContinentNumbr method
+
+Updated Game.java
+- patched attack method
+
+Deleted Status.java
+- deprecated
+
+Updated UserRepository.java
+- patched clearUsers to now set userCount to zero
+
+Updated GameGUI.java
+- patched "attack" actionCommand
+- externalized all exceptions
+
+Updated all .properties files
+- added InsufficientAttArmy
+- added InsufficientDefArmy
+- added endTurnUnassignedArmyException + patched
+- added between1And3Exception
+- added between1And2Exception
+- added insufficientDefArmy
+- added noValueException
+- added noNomericValue
+- added attDice
+- added defDice
+- added chooseCountriesDice
+- added winner
+- added quit
+
+Deleted GameMapper.java
+- deprecated
+
+Deleted TestUI.java
+- deprecated
+
+Created image
+- created winnar.png
+
+Created WinnerGUI.java
+- created WinnerGUI.java + created patches
+
+Added all UML diagrams
+
+
+
+
 
 RiskProject 0.96
 ---
