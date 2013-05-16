@@ -1,12 +1,13 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package domain.baseclass;
 
 import domain.enums.Symbol;
 import java.util.*;
-
+/**
+ * This class is used to define a user.
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ *
+ */
 public class User {
 	private final int MINNAMELENGTH = 3, MAXNAMELENGTH = 15;
 	private final Random rand= new Random();
@@ -16,7 +17,11 @@ public class User {
 	boolean turn;
 	private List<SymbolCard> symbolCards= new ArrayList<>();
 	private Symbol symbol;
-	
+	/**
+	 * The default constructor for a user.
+	 * @param name
+	 * @param symbol
+	 */
 	public User(String name, Symbol symbol) {
 		this.setName(name);
 		this.setSymbol(symbol);
@@ -25,6 +30,11 @@ public class User {
 	public String getName() {
 		return this.name;
 	}
+	/**
+	 * This method sets the name attribute and throws an exception if the name does not meet the requirements.
+	 * @param name
+	 * @throws IllegalArgumentException
+	 */
 	public void setName(String name) throws IllegalArgumentException{
 		if(!name.equals("") && name.length() >= MINNAMELENGTH && name.length() <= MAXNAMELENGTH){
 			this.name = name;
@@ -35,7 +45,9 @@ public class User {
 		else if(name.length() > MAXNAMELENGTH)
 			throw new IllegalArgumentException("tooLongNameException");
 	}
-	
+	/**
+	 * This method adds a random symbolcard to the user.
+	 */
 	public void addSymbolCard(){
 		int index= 1+rand.nextInt(3);
 		
@@ -58,7 +70,7 @@ public class User {
 		unassignedArmy+= value;
 	}
 	public static void setUserCount(int uC){
-		userCount= uC;
+		userCount = uC;
 	}
 	public static int getUserCount(){
 		return userCount;

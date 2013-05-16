@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package gui;
 
 import javax.swing.GroupLayout;
@@ -14,7 +10,12 @@ import domain.DomainController;
 
 import java.awt.event.*;
 import java.sql.SQLException;
-
+/**
+ * This class extends JFrame and allows the user to select a language.
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ * @see gui.Messages
+ */
 @SuppressWarnings("serial")
 public class LanguageGUI extends JFrame implements ActionListener{
 
@@ -29,7 +30,10 @@ public class LanguageGUI extends JFrame implements ActionListener{
 	private Messages messages= new Messages();
 	
 	private DomainController domainController;
-	
+	/**
+	 * This method creates a new JFrame
+	 * @param domainController
+	 */
 	public LanguageGUI(DomainController domainController) {
 		this.domainController= domainController;
 		
@@ -72,7 +76,10 @@ public class LanguageGUI extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 	}
-	
+	/**
+	 * This method performs an action based on an event caused by an event.
+	 * In this case the event is performed by a JButton on the JFrame.
+	 */
 	public void actionPerformed(ActionEvent event) {
 		try{
 		switch(event.getActionCommand()){
@@ -97,10 +104,8 @@ public class LanguageGUI extends JFrame implements ActionListener{
 		}
 		catch( ClassNotFoundException e){
 			JOptionPane.showMessageDialog(null, "Error!", e.getMessage(), JOptionPane.ERROR_MESSAGE);
-			e.printStackTrace();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Error!", e.getMessage(), JOptionPane.ERROR_MESSAGE);
-			e.printStackTrace();
 		}
 	}
 	

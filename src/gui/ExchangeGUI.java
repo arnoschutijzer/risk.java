@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package gui;
 
 import java.awt.event.ActionEvent;
@@ -20,6 +16,13 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.JLabel;
 import domain.DomainController;
 
+/**
+ * This class extends JFrame and allows the user to exchange his SymbolCards.
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ * @see domain.baseclass.User
+ */
+
 @SuppressWarnings("serial")
 public class ExchangeGUI extends JFrame implements ActionListener{
 	
@@ -31,7 +34,12 @@ public class ExchangeGUI extends JFrame implements ActionListener{
 	private List<JLabel> lblImages= new ArrayList<>();
 	private List<JToggleButton> btnSelection= new ArrayList<>();
 	private JButton btnConfirm;
-	
+	/**
+	 * This method is the default constructor of ExchangeGUI and creates a new JFrame.
+	 * @param domainController
+	 * @param messages
+	 * @param currentUser
+	 */
 	public ExchangeGUI(DomainController domainController, Messages messages, int currentUser){
 		this.domainController= domainController;
 		this.messages= messages;
@@ -108,7 +116,9 @@ public class ExchangeGUI extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	
+	/**
+	 * This method performs a series of actions based on the user's actions.
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		try{

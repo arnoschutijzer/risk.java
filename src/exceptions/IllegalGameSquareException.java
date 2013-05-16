@@ -1,5 +1,6 @@
 /**
-* @author Arno Schutijzer & Thijs van der Burgt
+* @author Arno Schutijzer
+* @author Thijs van der Burgt
 **/
 
 package exceptions;

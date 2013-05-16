@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package domain.repositories;
 
 import java.sql.SQLException;
@@ -28,7 +24,11 @@ public class MapRepository {
 	public Map getMap(int index){
 		return maps.get(index);
 	}
-	
+	/**
+	 * 
+	 * @return String array with the names of the instances of Map
+	 * @see domain.baseclass.Map
+	 */
 	public String[] getMapNames(){
 		int mapSize = maps.size();
 		String[] mapNames = new String[mapSize];

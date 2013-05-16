@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package gui;
 
 import java.awt.Dimension;
@@ -23,7 +19,12 @@ import javax.swing.SwingConstants;
 
 import domain.DomainController;
 import exceptions.UserAlreadyExistsException;
-
+/**
+ * This class extends JFrame and allows the user to initialise a game.
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ *
+ */
 @SuppressWarnings("serial")
 public class InitGUI extends JFrame implements ActionListener{
 	private final int MAXPLAYERS = 6;
@@ -37,7 +38,13 @@ public class InitGUI extends JFrame implements ActionListener{
 	private DomainController domainController;
 	
 	private Messages messages;
-	
+	/**
+	 * Default constructor of initGUI.
+	 * @param messages
+	 * @param domainController
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public InitGUI(Messages messages, DomainController domainController) throws ClassNotFoundException, SQLException{
 		this.domainController = domainController;
 		this.messages = messages;

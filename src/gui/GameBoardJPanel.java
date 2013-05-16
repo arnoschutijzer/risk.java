@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package gui;
 
 import java.awt.Dimension;
@@ -9,16 +5,27 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
-
+/**
+ * This class contains all the properties of the gameboard.
+ * The gameboard is a visual representation of the GameSquareRepository.
+ * 
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ * @see domain.repositories.GameSquareRepository
+ */
 @SuppressWarnings("serial")
 public class GameBoardJPanel extends JPanel{
 	private BufferedImage image;
 	private final int COLUMNS = 10, ROWS = 10, SQUAREWIDTH = 48;
-	
+	/**
+	 * Default constructor for GameBoardJPanel
+	 */
 	public GameBoardJPanel() {
 		this.setDimensions();
 	}
-
+	/**
+	 * Method defines the prefered dimensions for the gameboard.
+	 */
 	public void setDimensions() {
         Dimension size = new Dimension(SQUAREWIDTH*COLUMNS, SQUAREWIDTH*ROWS);
         this.setPreferredSize(size);

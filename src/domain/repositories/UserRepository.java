@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package domain.repositories;
 
 import java.util.List;
@@ -33,6 +29,7 @@ public class UserRepository {
 		return this.users;
 	}
 
+	@SuppressWarnings("static-access")
 	public void clearUsers() {
 		for(int i= 0; i< users.size(); i++)
 			users.get(i).setUserCount(0);

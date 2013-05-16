@@ -1,12 +1,9 @@
-/**
- * @author Arno Schutijzer & Thijs van der Burgt
- **/
-
 package domain.baseclass;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -14,7 +11,12 @@ import domain.repositories.*;
 import exceptions.IllegalGameSquareException;
 import exceptions.InsufficientArmy;
 import exceptions.UserAlreadyExistsException;
-
+/**
+ * Class delegates everything between the DomainController and the other classes.
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ *
+ */
 public class Game {
 
 	private String gameName;
@@ -23,7 +25,10 @@ public class Game {
 	private Random objRandom = new Random();
 	private final int DICESIDES = 6;
 	private List<Integer> gameSquaresPerUser = new ArrayList<>();
-
+	/**
+	 * Default constructor for Game.
+	 * @param name
+	 */
 	public Game(String name) {
 		this.gameName = name;
 		userRepository = new UserRepository();
@@ -33,7 +38,13 @@ public class Game {
 	public GameSquare getGameSquare(int x, int y) {
 		return map.getGameSquare(x, y);
 	}
-	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return GameSquare of the instance Land or null
+	 * @see domain.baseclass.Land
+	 */
 	public GameSquare getLand(int x, int y) {
 		if(map.getGameSquare(x, y) instanceof Land)
 			return map.getGameSquare(x, y);
@@ -52,24 +63,46 @@ public class Game {
 	public User getUser(int index) {
 		return userRepository.getUser(index);
 	}
-
+	/**
+	 * Calls the method createUser from the userRepository.
+	 * @param username
+	 * @throws UserAlreadyExistsException
+	 * @see domain.repostories.UserRepository
+	 */
 	public void createUser(String username) throws UserAlreadyExistsException {
 		userRepository.createUser(username);
 	}
-
+	/**
+	 * Calls the method clearUsers from the userRepository.
+	 * @see domain.repositories.UserRepository
+	 */
 	public void clearUsers() {
 		userRepository.clearUsers();
 	}
-
+	/**
+	 * Calls the method generateMap from GameSquareRepository
+	 * @param mapNr
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see domain.repositories.GameSquareRepository
+	 */
 	public void generateMap(int mapNr) throws ClassNotFoundException,
 			SQLException {
 		map.generateMap(mapNr);
 	}
-
+	/**
+	 * 
+	 * @return String from the toString function of GameSquareRepository
+	 * @see domain.repositories.GameSquareRepository
+	 */
 	public String displayMap() {
 		return map.toString();
 	}
-
+	/**
+	 * Adds 1 army to a specified GameSquare of the instance Land.
+	 * @param x
+	 * @param y
+	 */
 	public void addArmy(int x, int y) {
 		map.addArmy(x, y);
 	}
@@ -79,7 +112,7 @@ public class Game {
 	}
 
 	/**
-	 * Method assigns the selected map between the created users.
+	 * Method assigns the Land objects from the selected map between the created users.
 	 */
 	public void divideMap() {
 		
@@ -125,14 +158,26 @@ public class Game {
 			}
 		}
 	}
-
+	/**
+	 * Method simulates a battle between two objects of Land.
+	 * @param attX
+	 * @param attY
+	 * @param defX
+	 * @param defY
+	 * @param attDice
+	 * @param defDice
+	 * @return
+	 * @throws ClassCastException
+	 * @throws IllegalGameSquareException
+	 * @throws InsufficientArmy
+	 */
 	public boolean attack(int attX, int attY, int defX, int defY, int attDice,
 			int defDice) throws ClassCastException, IllegalGameSquareException,
 			InsufficientArmy {
 		if (attDice > 3 || defDice > 2 || attDice < 1 || defDice < 1) {
 			throw new IllegalArgumentException("codingError");
 		}
-		if (Math.abs((attX + attY) - (defX + defY)) != 1 && Math.abs((attX+attY) - (defX+defY)) != 9){
+		if (Math.abs((attX + attY) - (defX + defY)) != 1 && Math.abs((attX+attY) - (defX+defY)) != 9 || Math.abs(attY-defY) == 2 || Math.abs(attX-defX) == 2){
 			throw new IllegalGameSquareException("IllegalGameSquareException");
 		} else {
 			Land attacker, defender;
@@ -142,9 +187,10 @@ public class Game {
 			int attArmy = attacker.getArmy();
 			int defArmy = defender.getArmy();
 
-			if (attArmy == 0 || attArmy == 1 || attArmy <= attDice
-					|| defArmy < defDice) {
-				throw new InsufficientArmy("InsufficientArmy");
+			if (attArmy == 0 || attArmy == 1 || attArmy <= attDice) {
+				throw new InsufficientArmy("InsufficientAttArmy");
+			}else if(defArmy < defDice){
+				throw new InsufficientArmy("InsufficientDefArmy");
 			} else {
 				Integer[] attPoints = new Integer[attDice];
 				Integer[] defPoints = new Integer[defDice];
@@ -156,18 +202,24 @@ public class Game {
 					defPoints[i] = objRandom.nextInt(DICESIDES);
 				}
 
-				Arrays.sort(attPoints);
-				Arrays.sort(defPoints);
+				Arrays.sort(attPoints, Collections.reverseOrder());
+				Arrays.sort(defPoints, Collections.reverseOrder());
 
-				int a = (attDice >= defDice) ? defDice - 1 : attDice - 1;
-				for (int i = a; i >= 0; i--) {
-					if (defPoints[i] >= attPoints[i]) {
-						attArmy--;
-					} else {
+				int a = 0;
+				if(attDice > defDice){
+					a = defDice;
+				}else{
+					a = attDice;
+				}
+				
+				for(int i = 0 ; i < a; i++){
+					if(attPoints[i] > defPoints[i]){
 						defArmy--;
+					}else{
+						attArmy--;
 					}
 				}
-				// pas by reference
+				// pass by reference
 				attacker.setArmy(attArmy);
 				defender.setArmy(defArmy);
 
@@ -189,7 +241,11 @@ public class Game {
 			}
 		}
 	}
-
+	/**
+	 * 
+	 * @param cards
+	 * @return Amount of armies that can be addittionally placed.
+	 */
 	public int exchangeCards(List<String> cards) {
 
 		String type = " ";
@@ -223,7 +279,11 @@ public class Game {
 
 		return ret;
 	}
-
+	/**
+	 * 
+	 * @param user
+	 * @return Amount of armies a user should receive based on his conquered Lands.
+	 */
 	public int calcArmy(User user) {
 		int count = 0, army = 0;
 
@@ -242,7 +302,10 @@ public class Game {
 		else
 			return army;
 	}
-
+	/**
+	 * 
+	 * @return indexnumber of the user that has the first turn.
+	 */
 	public int calcTurn() {
 		int ret = 0, amount = gameSquaresPerUser.get(0);
 

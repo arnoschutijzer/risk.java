@@ -1,9 +1,9 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package domain.enums;
-
+/**
+ * This enum contains all the possible symbols a user can have.
+ * @author Thijs van der Burgt
+ *
+ */
 public enum Symbol {
 	SYMBOL1("aod"),
 	SYMBOL2("hazardous"),

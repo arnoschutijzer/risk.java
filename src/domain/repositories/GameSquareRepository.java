@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package domain.repositories;
 
 import java.sql.SQLException;
@@ -11,15 +7,30 @@ import persistance.PersistanceController;
 import domain.baseclass.GameSquare;
 import domain.baseclass.Land;
 import domain.baseclass.User;
-
+/**
+ * Holds the instances of all the GameSquare objects.
+ * 
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ *
+ */
 public class GameSquareRepository {
 	public static final int DIMX = 10, DIMY = 10;
 	private GameSquare[][] map;
 	
+	/**
+	 * Default constructor
+	 */
 	public GameSquareRepository(){
 		this.map = new GameSquare[DIMX][DIMY];
 	}
-	
+	/**
+	 * Initialises a GameSquare on a specified position in the GameSquare array (map attribute)
+	 * @param gs
+	 * @param x
+	 * @param y
+	 * @throws IllegalArgumentException
+	 */
 	public void initSquare(GameSquare gs, int x, int y) throws IllegalArgumentException{
 		this.map[x][y] = gs;
 	}
@@ -60,10 +71,21 @@ public class GameSquareRepository {
 		return DIMY;
 	}
 
+	/**
+	 * Calls the generateMap in PersistanceController
+	 * 
+	 * @param mapNr
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see persistance.PersistanceController
+	 */
 	public void generateMap(int mapNr) throws ClassNotFoundException, SQLException {
 		this.map = PersistanceController.getInstance().generateMap(mapNr, DIMX, DIMY);
 	}
 	
+	/**
+	 * Returns a textual representation of the attribute map
+	 */
 	public String toString(){
 		String out = "";
 		for(GameSquare[] gs : map){
@@ -79,7 +101,10 @@ public class GameSquareRepository {
 		}
 		return out;
 	}
-
+	/**
+	 * 
+	 * @return String array with the Symbols of the GameSquares in map.
+	 */
 	public String[][] gameSquareSymbolStringArray(){
 		String[][] symbols = new String[DIMX][DIMY];
 		for(int i = 0; i < DIMY; i++){
@@ -94,7 +119,10 @@ public class GameSquareRepository {
 		}
 		return symbols;
 	}
-	
+	/**
+	 * 
+	 * @return String array with the colors of the GameSquares in map.
+	 */
 	public String[][] gameSquareColorsStringArray() {
 		String[][] mapColors = new String[DIMX][DIMY];
 		for(int i = 0; i<DIMY; i++){

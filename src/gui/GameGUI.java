@@ -1,7 +1,3 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package gui;
 
 import java.awt.Color;
@@ -35,7 +31,13 @@ import javax.swing.border.LineBorder;
 import domain.DomainController;
 import exceptions.IllegalGameSquareException;
 import exceptions.InsufficientArmy;
-
+/**
+ * This class extends JFrame and allows the user to play the game.
+ * 
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ *
+ */
 @SuppressWarnings("serial")
 public class GameGUI extends JFrame implements MouseListener, ActionListener {
 	
@@ -54,7 +56,11 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 	
 	private JLabel lblAttDice = new JLabel(), lblDefDice = new JLabel();
 	private JTextField txtAttDice = new JTextField(), txtDefDice = new JTextField();
-	
+	/**
+	 * Default constructor of GameGUI
+	 * @param messages
+	 * @param domainController
+	 */
 	public GameGUI(Messages messages, DomainController domainController){
 		this.domainController = domainController;
 		this.messages = messages;
@@ -83,8 +89,8 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		btnEndTurn = this.paintButton("endTurn");
 		btnExchange = this.paintButton("exchange");
 		
-		lblAttDice.setText("Att count");
-		lblDefDice.setText("Def count");
+		lblAttDice.setText(messages.getString("attDice"));
+		lblDefDice.setText(messages.getString("defDice"));
 		
 		txtAttDice.setMaximumSize(new Dimension(100, JTextField.HEIGHT));
 		txtDefDice.setMaximumSize(new Dimension(100, JTextField.HEIGHT));
@@ -154,7 +160,10 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		pack();
 		this.setLocationRelativeTo(null);
 	}
-	
+	/**
+	 * 
+	 * @return A JPanel with the scoreboard.
+	 */
 	private JPanel paintScores(){
 		
 		JPanel pane= new JPanel();
@@ -214,7 +223,15 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		pane.setMinimumSize(dim);
 		return pane;
 	}
-	
+	/**
+	 * 
+	 * @param userType
+	 * @param countryName
+	 * @param userName
+	 * @param armyCount
+	 * @param continentNr
+	 * @return A panel with the information of the attacking and defending GameSquare.
+	 */
 	private JPanel paintAttDefPanel(String userType, JLabel countryName, JLabel userName, JLabel armyCount, JLabel continentNr){
 		JPanel pane = new JPanel();
 		pane.setBorder(new LineBorder(Color.black, 1, false));
@@ -259,7 +276,11 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		pane.setPreferredSize(dim);
 		return pane;
 	}
-	
+	/**
+	 * 
+	 * @param text
+	 * @return A JButton with a specified text.
+	 */
 	private JButton paintButton(String text){
 		Dimension dim = new Dimension(180,50);
 		//Construct new button using messages.getString(text)
@@ -271,7 +292,10 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		button.setActionCommand(text);
 		return button;
 	}
-	
+	/**
+	 * This methods paints the gameboard using Graphics2D
+	 * @throws IOException
+	 */
 	private void paintMap() throws IOException{
 		int rows = mapPanel.getRows(), cols = mapPanel.getColumns(), width = mapPanel.getSquareWidth();
 		int mapSize = rows*width;
@@ -353,6 +377,9 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 	
 	//only called when Attack-button is clicked and attack-method has ended
 	//or attackX/Y && defendX/Y != -1
+	/**
+	 * This method refreshes the panels whom contain the information about the attacking and the defending GameSquare.
+	 */
 	public void refreshAttDefPanels(){
 		lblAttArmy.setText(""+domainController.getArmy(attackX, attackY));
 		lblAttUserName.setText(domainController.getGameSquareRepository().getUser(attackX, attackY).toString());
@@ -360,7 +387,9 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		lblDefArmy.setText(""+domainController.getArmy(defendX, defendY));
 		lblDefUserName.setText(domainController.getGameSquareRepository().getUser(defendX, defendY).toString());
 	}
-	
+	/**
+	 * Resets the panels whom contain the information about the attacking and the defending GameSquare.
+	 */
 	public void resetAttDefPanels(){
 		lblAttArmy.setText("");
 		lblAttUserName.setText("");
@@ -374,12 +403,18 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 	}
 	
 	//can be called any time
+	/**
+	 * This method refreshes the labels with additional information.
+	 */
 	public void refreshLabels(){
 		lblUserTurn.setText(messages.getString("userTurn")+domainController.getUser(currentUser));
 		lblArmiesToPlace.setText(messages.getString("armiesToPlace")+domainController.getUser(currentUser).getUnassignedArmy());
 	}
 	
-	
+	/**
+	 * 
+	 * @return Amount of additional armies a user can place if he or she conquered a continent.
+	 */
 	public int strengthenContinent(){
 		int[] countriesPerContinent= {12, 11, 15, 15, 15, 9};
 		int[] countriesPerContinent2= {12, 11, 15, 15, 15, 9};
@@ -389,8 +424,8 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 			for(int j= 0; j< domainController.getGameSquareRepository().getDIMX(); j++)
 				if(domainController.getLand(j, i) != null)
 					if( domainController.getUser(j, i)== domainController.getUser(currentUser) ){
-						if(domainController.getContinentNumbr(i, j) != -1){
-							continentNr= domainController.getContinentNumbr(i, j);
+						if(domainController.getContinentNumber(i, j) != -1){
+							continentNr= domainController.getContinentNumber(i, j);
 							countriesPerContinent[continentNr]--;
 						}
 					}
@@ -401,7 +436,10 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 
 		return Math.max(3,ret/3);
 	}
-	
+	/**
+	 * 
+	 * @return True if the game has ended.
+	 */
 	public boolean checkWin(){
 		int countries= 0;
 		
@@ -480,40 +518,56 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		try{
 			switch(a.getActionCommand()){
 			case "attack":
-
+				
+				if(domainController.getUser(currentUser).getUnassignedArmy() != 0)
+					throw new IllegalStateException("endTurnUnassignedArmyException");
 				if(attackX== -1 || attackY== -1 || defendY== -1 || defendX== -1)
-					throw new IllegalStateException();
+					throw new IllegalStateException("chooseCountriesDice");
 				if(domainController.getUser(attackX, attackY) == domainController.getUser(defendX, defendY))
 					throw new IllegalStateException("attackSelfException");
 				else{
-					int aArmy= domainController.getArmy(attackX, attackY);
-					int dArmy= domainController.getArmy(defendX, defendY);
-					int attDice, defDice;
-
-					if(aArmy-1 > 3)
-						attDice= 3;
-					else if(aArmy == 1)
-						attDice= 1;
-					else
-						attDice= aArmy-1;
-
-					if(dArmy-1 > 2)
-						defDice= 2;
-					else if(dArmy== 1)
-						defDice= 1;
-					else
-						defDice= dArmy-1;
-
+					int attDice=0, defDice=0;
+					int maxDefDice= 0, maxAttDice= 0;
+					int army= 0;
 					
-					conquered= domainController.attack(attackX, attackY, defendX, defendY, attDice, defDice);
+					try{
+						
+						if(txtAttDice.getText().equals("") || txtAttDice.getText().equals(null) || txtDefDice.getText().equals("") || txtDefDice.getText().equals(null))
+							throw new IllegalArgumentException("noValueException");
+						
+						attDice = Integer.parseInt(txtAttDice.getText());
+						defDice = Integer.parseInt(txtDefDice.getText());
+						
+						if(domainController.getArmy(attackX, attackY)-1 > 3)
+							maxAttDice= 3;
+						else
+							maxAttDice= domainController.getArmy(attackX, attackY)-1;
+						
+						if(domainController.getArmy(defendX, defendY) == 1)
+							maxDefDice= 1;
+						else
+							maxDefDice= 2;
+						
+						
+						if(attDice > 3 || attDice < 1)
+							throw new IllegalArgumentException("between1And3Exception");
+						if(defDice > 2 || defDice < 1)
+							throw new IllegalArgumentException("between1And2Exception");
+						
+						conquered = domainController.attack(attackX, attackY, defendX, defendY, attDice, defDice);
 
-					refreshAttDefPanels();
-					
-					if(conquered){
-						paintMap();
-						if(checkWin())
-							JOptionPane.showMessageDialog(null, "winning");
-							//screen to notify user has won
+						refreshAttDefPanels();
+						
+						if(conquered){
+							paintMap();
+							if(checkWin()){
+								new WinnerGUI(domainController.getUser(currentUser).getName(), messages);
+								this.dispose();
+							}
+						}
+						
+					}catch(NumberFormatException fme){
+						JOptionPane.showMessageDialog(null, messages.getString("noNumericValue"));
 					}
 				}
 				break;
@@ -566,13 +620,13 @@ public class GameGUI extends JFrame implements MouseListener, ActionListener {
 		}
 		catch(IllegalStateException | ClassCastException | InsufficientArmy | IllegalGameSquareException | NullPointerException | IllegalArgumentException e){
 			JOptionPane.showMessageDialog(null, this.messages.getString(e.getMessage()));
-			e.printStackTrace();
-
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 
+	 * @return indexnumber of the current user.
+	 */
 	public int getCurrentUser(){
 		return currentUser;
 	}

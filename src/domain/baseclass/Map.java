@@ -1,9 +1,10 @@
-/**
-* @author Arno Schutijzer & Thijs van der Burgt
-**/
-
 package domain.baseclass;
-
+/**
+ * This class is used to define a map.
+ * @author Thijs van der Burgt
+ * @author Arno Schutijzer
+ *
+ */
 public class Map {
 	private String name;
 	private int number;
