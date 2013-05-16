@@ -315,17 +315,17 @@ Created GameGUI.java
 
 RiskProject v0.5
 ---
-added another worldmap
+- added another worldmap
 
-updated MapRepository.java with method getMapNames
-updated UserRepository.java, deleted unused import
-updated Game.java with methods attack and exchangeCards
-updated DomainController.java
-updated InitGUI.java (optimizations)
-updated DB with another worldmap
+- updated MapRepository.java with method getMapNames
+- updated UserRepository.java, deleted unused import
+- updated Game.java with methods attack and exchangeCards
+- updated DomainController.java
+- updated InitGUI.java (optimizations)
+- updated DB with another worldmap
 
-TestUI.java changed
-InitialisationJigloo.java deprecated: deleted as of now
+- TestUI.java changed
+- InitialisationJigloo.java deprecated: deleted as of now
 
 
 
@@ -348,20 +348,20 @@ length is shorter than 2
 
 RiskProject v0.35
 ---
-updated InitGUI
-updated UserAlreadExistsException to include error message when default
+- updated InitGUI
+- updated UserAlreadExistsException to include error message when default
 constructor is called
-updated messages_fr/messages_en/messages_nl to include:
-maptranslation, InitGUItranslation, titleTranslation
-updated Startup.java to construct a new LanguageGUI.java which then
-constructs InitGUI.java
+- updated messages_fr/messages_en/messages_nl to include:
+- maptranslation, InitGUItranslation, titleTranslation
+- updated Startup.java to construct a new LanguageGUI.java which then
+- constructs InitGUI.java
 
-changed params of LanguageGUI.java and InitGUI.java constructors to
+- changed params of LanguageGUI.java and InitGUI.java constructors to
 include DomainController to call startGame(String) with given String
 
 deprecated:
-InitialisationJigloo.java: temp. included for look-up purposes
-ApplicationController.java: already deleted
+- InitialisationJigloo.java: temp. included for look-up purposes
+- ApplicationController.java: already deleted
 
 
 
@@ -370,11 +370,11 @@ ApplicationController.java: already deleted
 
 RiskProject v0.3 Patch
 ---
-implemented initGUI fix
+- implemented initGUI fix
 
-fixed NullExceptionPointer
-fixed prinstacktraces not working well
-dutch countries added to resource bundles
+- fixed NullExceptionPointer
+- fixed prinstacktraces not working well
+- dutch countries added to resource bundles
 
 
 
@@ -383,11 +383,11 @@ dutch countries added to resource bundles
 
 RiskProject v0.3
 ---
-InitialisationJigloo optimized
-InitGUI implimented
+- InitialisationJigloo optimized
+- InitGUI implemented
 
-InitialisationGroupLayouts deprecated
-RiskApp deprecated
+- InitialisationGroupLayouts deprecated
+- RiskApp deprecated
 
 
 ---
