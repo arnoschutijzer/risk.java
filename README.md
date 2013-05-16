@@ -1,4 +1,4 @@
-*[Forking this repository] (https://github.com/gitloaf/RiskProject//master/README.md#fork)*
+*[Forking this repository] (https://github.com/gitloaf/RiskProject/blob/master/README.md#fork)*
 
 RiskProject patchnotes
 ====
@@ -394,6 +394,9 @@ RiskApp deprecated
 
 Fork
 =
-Fork the repo and clone it to your local repository. Import the repo into your workspace.
+Feel free to fork this repository and open pull requests.
+Be sure to add a comment to your pull request.
+Other pull requests will be denied.
 
+Fork the repo and clone it to your local repository. Import the repo into your workspace.
 Or download the .zip file, extract it, and import it in your workspace.
