@@ -1,3 +1,5 @@
+*[Forking this repository] (https://github.com/gitloaf/RiskProject//master/README.md#fork)*
+
 RiskProject patchnotes
 ====
       NOTE: RiskProject is now fully functioning.
@@ -386,3 +388,12 @@ InitGUI implimented
 
 InitialisationGroupLayouts deprecated
 RiskApp deprecated
+
+
+---
+
+Fork
+=
+Fork the repo and clone it to your local repository. Import the repo into your workspace.
+
+Or download the .zip file, extract it, and import it in your workspace.
