@@ -219,12 +219,11 @@ updated GameGUI.java
 - implemented ActionPerformed to open new ExchangeGUI()
 
 created ExchangeGUI.java
-- will contain GUI to exchange cards
-(not implemented yet)
+- will contain GUI to exchange cards (not implemented yet)
 
-added cannon.png
-added horse.png
-added infantry.png
+- added cannon.png
+- added horse.png
+- added infantry.png
 
 
 
@@ -272,7 +271,7 @@ updated UserRepository.java
 
 RiskProject 0.8
 ---
-GameGUI.java updated
+- GameGUI.java updated
 -additional panel added for extra info
 -scrolling over a GameSquare is now correctly shown
 -code optimization
