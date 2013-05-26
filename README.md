@@ -8,6 +8,10 @@ RiskProject patchnotes
       Future expansions might be added.
 
 
+RiskProject 1.1
+---
+Deleted Status.java Enum
+
 RiskProject 1.0
 ---
 Complete patch of every bug found
@@ -38,7 +42,7 @@ Updated all .properties files
 - added between1And2Exception
 - added insufficientDefArmy
 - added noValueException
-- added noNomericValue
+- added noNumericValue
 - added attDice
 - added defDice
 - added chooseCountriesDice
