@@ -35,7 +35,7 @@ public class ExchangeGUI extends JFrame implements ActionListener{
 	private List<JToggleButton> btnSelection= new ArrayList<>();
 	private JButton btnConfirm;
 	/**
-	 * This method is the default constructor of ExchangeGUI and creates a new JFrame.
+	 * Constructor of this class and creates a new JFrame.
 	 * @param domainController
 	 * @param messages
 	 * @param currentUser
@@ -118,6 +118,7 @@ public class ExchangeGUI extends JFrame implements ActionListener{
 
 	/**
 	 * This method performs a series of actions based on the user's actions.
+	 * @param e
 	 */
 	public void actionPerformed(ActionEvent e) {
 
