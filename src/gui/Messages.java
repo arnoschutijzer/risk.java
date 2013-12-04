@@ -13,8 +13,8 @@ public class Messages {
 
 	private static ResourceBundle RESOURCE_BUNDLE;
 	/**
-	 * Default constructor for Messages.
-	 * Based on the paramater 'bundle' a specific resourcebundle will me used.
+	 * 
+	 * Based on the paramater 'bundle' a specific resourcebundle will be used.
 	 * @param bundle
 	 */
 	public void setResourceBundle(String bundle) {
@@ -33,7 +33,7 @@ public class Messages {
 	/**
 	 * 
 	 * @param key
-	 * @return A String based on a keyword in the resourcebundle.
+	 * @return a String based on a keyword in the resourcebundle.
 	 */
 	public String getString(String key) {
 		try {
