@@ -31,6 +31,7 @@ public class LanguageGUI extends JFrame implements ActionListener{
 	
 	private DomainController domainController;
 	/**
+	 * Constructor of this class.
 	 * This method creates a new JFrame
 	 * @param domainController
 	 */
@@ -77,7 +78,7 @@ public class LanguageGUI extends JFrame implements ActionListener{
 		pack();
 	}
 	/**
-	 * This method performs an action based on an event caused by an event.
+	 * This method performs an action based on an event caused by a component activating.
 	 * In this case the event is performed by a JButton on the JFrame.
 	 */
 	public void actionPerformed(ActionEvent event) {
