@@ -1,11 +1,10 @@
 *[Forking this repository] (https://github.com/gitloaf/RiskProject/blob/master/README.md#fork)*
 
-RiskProject patchnotes
+Risk patchnotes
 ====
       NOTE: RiskProject is now fully functioning.
       RiskProject will only be updated for performance enhancements and 
       uncaught bugfixes.
-      Future expansions might be added.
 
 
 RiskProject 1.1
