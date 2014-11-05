@@ -1,7 +1,10 @@
+Java implementation of Risk using Swing, SQLite, externalized Strings
+=
+
 *[Forking this repository] (https://github.com/gitloaf/RiskProject/blob/master/README.md#fork)*
 
 Risk patchnotes
-====
+===
       NOTE: RiskProject is now fully functioning.
       RiskProject will only be updated for performance enhancements and 
       uncaught bugfixes.
