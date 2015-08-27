@@ -1,14 +1,6 @@
 Java implementation of Risk using Swing, SQLite, externalized Strings
 =
 
-*[Forking this repository] (https://github.com/gitloaf/RiskProject/blob/master/README.md#fork)*
-
-Risk patchnotes
-===
-      NOTE: RiskProject is now fully functioning.
-      RiskProject will only be updated for performance enhancements and 
-      uncaught bugfixes.
-
 
 RiskProject 1.1
 ---
@@ -396,12 +388,3 @@ RiskProject v0.3
 
 
 ---
-
-Fork
-=
-Feel free to fork this repository and open pull requests.
-Be sure to add a comment to your pull request.
-Other pull requests will be denied.
-
-Fork the repo and clone it to your local repository. Import the repo into your workspace.
-Or download the .zip file, extract it, and import it in your workspace.
