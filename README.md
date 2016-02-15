@@ -2,6 +2,9 @@ Java implementation of Risk using Swing, SQLite, externalized Strings
 =
 
 
+#NOTE: this repository is unsupported and barely functional anymore with the recent updates. Use are your own peril. HERE BE DRAGONS
+
+
 RiskProject 1.1
 ---
 Deleted Status.java Enum
